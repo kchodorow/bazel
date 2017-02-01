@@ -167,14 +167,6 @@ static void SetupHelperFiles() {
   }
 }
 
-static bool IsDirectory(const char *path) {
-  struct stat sb;
-  if (stat(path, &sb) < 0) {
-    DIE("stat(%s)", path);
-  }
-  return S_ISDIR(sb.st_mode);
-}
-
 // Recursively creates the file or directory specified in "path" and its parent
 // directories.
 static int CreateTarget(const char *path, bool is_directory) {
@@ -305,7 +297,8 @@ static void MountFilesystems() {
 static bool ShouldBeWritable(char *mnt_dir) {
   mnt_dir += strlen(opt.sandbox_root_dir);
 
-  if (strcmp(mnt_dir, opt.working_dir) == 0) {
+  char *working_parent = dirname(strdupa(opt.working_dir));
+  if (strncmp(working_parent, mnt_dir, strlen(working_parent)) == 0) {
     return true;
   }
 

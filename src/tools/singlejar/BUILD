@@ -230,12 +230,12 @@ sh_test(
     args = [
         "src/test/shell",
         "$(location :singlejar)",
-        "$(location //external:jar)",
+        "$(location @local_jdk//:jar)",
     ],
     data = [
         ":singlejar",
-        "//external:jar",
         "//tools/defaults:jdk",
+        "@local_jdk//:jar",
     ],
     deps = ["//src/test/shell:bashunit"],
 )

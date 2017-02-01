@@ -1213,7 +1213,7 @@ public final class CcLibraryHelper {
         ruleContext.getLabel().getPackageIdentifier().getRepository().getPathUnderExecRoot();
     contextBuilder.addQuoteIncludeDir(repositoryPath);
     contextBuilder.addQuoteIncludeDir(
-        ruleContext.getConfiguration().getGenfilesFragment().getRelative(repositoryPath));
+        repositoryPath.getRelative(ruleContext.getConfiguration().getGenfilesFragment()));
 
     for (PathFragment systemIncludeDir : systemIncludeDirs) {
       contextBuilder.addSystemIncludeDir(systemIncludeDir);

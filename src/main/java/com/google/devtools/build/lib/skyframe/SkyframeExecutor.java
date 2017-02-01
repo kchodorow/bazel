@@ -72,6 +72,7 @@ import com.google.devtools.build.lib.analysis.config.ConfigurationFragmentFactor
 import com.google.devtools.build.lib.analysis.config.InvalidConfigurationException;
 import com.google.devtools.build.lib.cmdline.Label;
 import com.google.devtools.build.lib.cmdline.PackageIdentifier;
+import com.google.devtools.build.lib.cmdline.RepositoryName;
 import com.google.devtools.build.lib.cmdline.TargetParsingException;
 import com.google.devtools.build.lib.concurrent.ThreadSafety;
 import com.google.devtools.build.lib.concurrent.ThreadSafety.ThreadCompatible;
@@ -1437,7 +1438,7 @@ public abstract class SkyframeExecutor implements WalkableGraphFactory {
       EventHandler eventHandler, Label label, BuildConfiguration configuration) {
     if (memoizingEvaluator.getExistingValueForTesting(
         PrecomputedValue.WORKSPACE_STATUS_KEY.getKeyForTesting()) == null) {
-      injectWorkspaceStatusData(label.getWorkspaceRoot());
+      injectWorkspaceStatusData(label.getPackageIdentifier().getRepository().strippedName());
     }
 
     Dependency dep;
