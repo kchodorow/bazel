@@ -2,6 +2,9 @@
 layout: documentation
 title: Deploying new Skylark rules
 ---
+end-block-->
+
+
 # Deploying new Skylark rules
 
 This documentation is for Skylark rule writers who are planning to make their

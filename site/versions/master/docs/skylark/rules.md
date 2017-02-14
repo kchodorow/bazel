@@ -17,6 +17,7 @@ also inputs to this rule. As a rule writer, you must consider not only the
 user-provided inputs to a rule, but also all of the tools and libraries required
 to execute the actions (called _implicit inputs_).
 
+
 ## Rule creation
 
 In a `.bzl` file, use the [rule](lib/globals.html#rule)

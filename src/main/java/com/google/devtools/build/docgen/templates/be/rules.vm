@@ -23,6 +23,7 @@ title: ${ruleFamily.name} Rules
   </ul>
 </div>
 
+
 #foreach ($rule in $ruleFamily.rules)
   <h2 id="${rule.ruleName}"#if($rule.isDeprecated()) class="deprecated"#end>
     ${rule.ruleName}

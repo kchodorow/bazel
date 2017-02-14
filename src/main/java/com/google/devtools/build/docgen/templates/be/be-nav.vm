@@ -6,6 +6,7 @@
 <ul class="sidebar-nav">
   <li><a href="${path}/overview.html">Overview</a></li>
 
+
   <li>
 
     <a data-toggle="collapse" href="#be-menu" aria-expanded="false"
@@ -47,5 +48,6 @@
   <li><a href="${bazelbuildGithub}/rules_scala" target="_blank">Scala</a></li>
   </ul>
   </li>
+
 
 </ul>

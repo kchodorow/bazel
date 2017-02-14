@@ -5,6 +5,8 @@ package(
     default_visibility = ["//src:__subpackages__"],
 )
 
+licenses(["notice"])
+
 java_library(
     name = "genrule",
     srcs = glob(["*.java"]),
@@ -19,8 +21,13 @@ java_library(
         "//src/main/java/com/google/devtools/build/lib/rules/cpp",
         "//third_party:guava",
         "//third_party:jsr305",
-        "//third_party/protobuf:protobuf_java",
+        "//third_party/protobuf:protobuf-java",
     ],
+)
+
+filegroup(
+    name = "docgen_src",
+    srcs = glob(["*.java"]),
 )
 
 filegroup(

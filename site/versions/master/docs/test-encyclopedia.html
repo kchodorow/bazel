@@ -2,9 +2,13 @@
 layout: documentation
 title: Test Encyclopedia
 ---
+end-block-->
+
+
 <h1>Writing tests</h1>
 
 <p class="lead">An Exhaustive Specification of the Test Execution Environment</p>
+
 
 <h2>Background</h2>
 
@@ -12,6 +16,7 @@ title: Test Encyclopedia
 automated test programs in many languages.</p>
 
 <p>Tests are run using <code><a href="bazel-user-manual.html#test">bazel test</a></code>.
+
 
 Users may also execute test binaries directly. This is allowed but not endorsed, as such
 an invocation will not adhere to the mandates described below.</p>
@@ -24,11 +29,13 @@ release engineering auditability, and resource isolation of tests (automated
 testing frameworks ought not DDOS a server because some tests happen to
 talk to it).<p>
 
+
 <h2>Objective</h2>
 
 <p>The goal of this document is to formally establish the runtime environment
 for and expected behavior of Bazel tests.  It will also impose requirements on
 the test runner and the build system.
+
 
 Our intent is to help test authors avoid relying on unspecified
 behavior, and thus give the testing infrastructure more freedom to make
@@ -39,6 +46,7 @@ properly hermetic, deterministic, and reentrant.</p>
 <p>This document is intended to be both normative and authoritative.  If
 this specification and the implemented behavior of test runner disagree, the
 specification takes precedence.</p>
+
 
 
 <h3>Purpose of Tests</h3>
@@ -62,6 +70,7 @@ their changes are at fault when the test stops passing.</p>
 <p>Currently, such behavior is not enforced. However, test runners reserve the
 right to add such enforcement in the future.</p>
 
+
 <h3>Role of the Build System</h3>
 
 <p>Test rules are analogous to binary rules in that each must yield an
@@ -78,6 +87,7 @@ files across tests, e.g. through the use of dynamic linking.)  The build system
 should ensure that the generated executable loads these files via the runfiles
 image provided by the test runner, rather than hardcoded references to absolute
 locations in the source or output tree.</p>
+
 
 <h3>Role of the Test Runner</h3>
 
@@ -101,6 +111,9 @@ limited amount of time to run to completion. The time limit for a test is based
 on its timeout attribute according to the following table:</p>
 
 <table class="table table-bordered table-striped table-condensed">
+end-block-->
+
+
   <thead>
     <tr><th>timeout</th><th>Time Limit (sec.)</th></tr>
   </thead>
@@ -116,6 +129,9 @@ on its timeout attribute according to the following table:</p>
 test's <code>size</code> as follows:</p>
 
 <table class="table table-bordered table-striped table-condensed">
+end-block-->
+
+
   <thead>
     <tr><th>size</th><th>Implied timeout label</th></tr>
   </thead>
@@ -141,6 +157,9 @@ flakiness.</p>
 <p>There is also a recommended lower bound for test timeouts as follows: </p>
 
 <table class="table table-bordered table-striped table-condensed">
+end-block-->
+
+
   <thead>
     <tr><th>size</th><th>Time minimum (sec.)</th></tr>
   </thead>
@@ -161,6 +180,7 @@ tests whose specified size is too big.</p>
 <a href="be/common-definitions.html#common-attributes-tests">here</a>.
 Any test that does not specify a recognized size will default to being a medium
 test.</p>
+
 
 <p>If the main process of a test exits, but some of its children are still
 running, the test runner should consider the run complete and count it as a
@@ -183,10 +203,14 @@ test unless the user explicitly requests it.</p>
 <p>The initial environment block shall be composed as follows:</p>
 
 <table class="table table-bordered table-striped table-condensed">
+end-block-->
+
+
   <thead>
     <tr><th>Variable</th><th>Value</th><th>Status</th></tr>
   </thead>
   <tbody>
+
 
     <tr><td><code>HOME</code></td><td>value of <code>$TEST_TMPDIR</code></td><td>recommended</td></tr>
     <tr><td><code>LANG</code></td><td><i>unset</i></td><td>required</td></tr>
@@ -201,11 +225,12 @@ test unless the user explicitly requests it.</p>
     <tr><td><code>LD_LIBRARY_PATH</code></td><td>colon-separated list of directories containing shared libraries</td><td>optional</td></tr>
     <tr><td><code>JAVA_RUNFILES</code></td><td>value of <code>$TEST_SRCDIR</code></td><td>deprecated</td></tr>
 
+
     <tr><td><code>LOGNAME</code></td><td>value of <code>$USER</code></td><td>required</td></tr>
 
     <tr><td><code>PATH</code></td><td><code>/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:.</code></td><td>recommended</td></tr>
     <tr><td><code>PWD</code></td><td><code>$TEST_SRCDIR/<i>workspace-name</i></code></td><td>recommended</td></tr>
-    <tr><td><code>SHLVL</code></td><td><code>2</code></td><td>recommended</td></tr>
+end-block -->    <tr><td><code>SHLVL</code></td><td><code>2</code></td><td>recommended</td></tr>
     <tr><td><code>TEST_PREMATURE_EXIT_FILE</code></td><td>absolute path to a private file in a writable directory (used for catching calls to exit())</td><td>optional</td></tr>
     <tr>
       <td><code>TEST_RANDOM_SEED</code></td>
@@ -220,6 +245,7 @@ test unless the user explicitly requests it.</p>
     <tr><td><code>TEST_UNDECLARED_OUTPUTS_DIR</code></td><td>absolute path to a private writable directory (used to write undeclared test outputs)</td><td>optional</td></tr>
     <tr><td><code>TEST_UNDECLARED_OUTPUTS_ANNOTATIONS_DIR</code></td><td>absolute path to a private writable directory (used to write undeclared test output annotation .part files).
 
+<!-- begin-block:shared-->
     </td><td>optional</td></tr>
     <tr><td><code>TEST_WARNINGS_OUTPUT_FILE</code></td><td>absolute path to a private file in a writable directory (used to write test target warnings)</td><td>optional</td></tr>
 
@@ -259,6 +285,9 @@ to their default action.</p>
 <p>The initial resource limits, both soft and hard, should be set as follows:</p>
 
 <table class="table table-bordered table-striped table-condensed">
+end-block-->
+
+
   <thead>
     <tr><th>Resource</th><th>Limit</th></tr>
   </thead>
@@ -292,6 +321,7 @@ utilization (as returned by <code>getrusage()</code>) are unspecified.</p>
 test runner, the operating system on which tests execute must satisfy certain
 properties for a test run to be valid.</p>
 
+
 <h4>Filesystem</h4>
 
 <p>
@@ -300,6 +330,7 @@ The root directory observed by a test may or may not be the real root directory.
 All build tools shall be present at the absolute paths under <code>/usr</code> used by a local installation.<br>
 Paths starting with <code>/home</code> may not be available. Tests should not access any such paths.<br>
 <code>/tmp</code> and <code>/export/hda3/tmp</code> shall be writable, but tests should avoid using these paths.<br>
+
 
 Tests must not assume that any constant path is available for their exclusive use.<br>
 Tests must not assume that atimes are enabled for any mounted filesystem.<br>
@@ -329,6 +360,7 @@ the hostname must give an IP address of the current host. Resolving the
 hostname cut after the first dot must also work. The hostname localhost must
 resolve.</p>
 
+
 <h4>Other resources</h4>
 
 <p>Tests are granted at least one CPU core. Others may be available but this
@@ -344,10 +376,13 @@ the range of tens of thousands of inputs and several GB of aggregate size.</p>
 
 <p>The current time and date are unspecified. The system timezone is unspecified.
 
+
 </p>
+
 
 <p>X Windows may or may not be available. Tests that need an X server should
 start Xvfb.</p>
+
 
 <h3>Test interaction with the filesystem</h3>
 <p>All file paths specified in test environment variables point to
@@ -364,12 +399,15 @@ The filesystem type of <code>$TEST_TMPDIR/.</code> remains unspecified.<br>
 Tests may also write .part files to the <code>$TEST_UNDECLARED_OUTPUTS_ANNOTATIONS_DIR</code>
 to annotate undeclared output files.</p>
 
+
 <p>Tests must access inputs through the <b>runfiles</b> mechanism, or other
 parts of the execution environment which are specifically intended to make
 input files available.
 
+
 Tests must not access other outputs of the
 build system at paths inferred from the location of their own executable.</p>
+
 
 <p>It is unspecified whether the runfiles tree contains regular files, symbolic
 links, or a mixture. The runfiles tree may contain symlinks to directories.
@@ -387,6 +425,7 @@ during test execution.  Parent directories and filesystem mounts must not change
 in any way which affects the result of resolving a path within the runfiles
 tree.</p>
 
+
 <p>In order to catch early exit, a test may create a file at the path specified by
 <code>TEST_PREMATURE_EXIT_FILE</code> upon start and remove it upon exit.  If
 Bazel sees the file when the test finishes, it will assume that the test exited
@@ -400,6 +439,9 @@ prematurely and mark it as having failed.</p>
 </p>
 
 <table class="table table-bordered table-striped table-condensed">
+end-block-->
+
+
   <thead>
     <tr><th>Tag</th><th>Meaning</th></tr>
   </thead>
@@ -417,8 +459,10 @@ prematurely and mark it as having failed.</p>
       <th><code>large</code></th>
       <td><code>test_suite</code> convention; suite of large tests<br/>
 
+
       </td>
     </tr>
+
 
     <tr>
       <th><code>manual</code></th>
@@ -430,6 +474,7 @@ prematurely and mark it as having failed.</p>
 
       <td><code>test_suite</code> convention; suite of medium tests
     </tr>
+
 
     <tr>
       <th><code>small</code></th>
@@ -445,6 +490,7 @@ prematurely and mark it as having failed.</p>
         into the version control system
       </td>
     </tr>
+
 
   </tbody>
 </table>
@@ -483,3 +529,4 @@ The target of the symlink is the runfiles directory. I.e. all subprograms share 
 runfiles directory.</li>
 </ul>
 
+end-block -->

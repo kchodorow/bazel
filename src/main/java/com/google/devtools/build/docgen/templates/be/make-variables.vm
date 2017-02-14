@@ -83,6 +83,7 @@ results. For genrules involving compiler and platform invocation, you must use
 the "Make" variable syntax.  The same basic command set is also available during
 tests. Simply rely on the PATH.</p>
 
+
 <p><strong>Compiler and Platforms available to genrules</strong></p>
 These tools may not be in the PATH, therefore you must use "Make" variable syntax
 in your genrule's cmd attribute.
@@ -112,6 +113,7 @@ in your genrule's cmd attribute.
     working directory before changing it.
   </li>
 
+
   <li> <code>STRIP</code>: The strip command from the same suite as the C/C++
     compiler.</li>
   <li> <code>AR</code>: The "ar" command from crosstool. </li>
@@ -128,6 +130,7 @@ in your genrule's cmd attribute.
     the correct architecture if <code>CC</code> supports multiple architectures.
   </li>
   <li><code>COMPILATION_MODE</code>: "fastbuild", "dbg", or "opt".</li>
+
 
 </ul>
 
@@ -160,6 +163,7 @@ in your genrule's cmd attribute.
 <ul><!--  keep alphabetically sorted  -->
   <li><code>ABI</code>:
     The C++ ABI version; currently "gcc-3.4". </li>
+
 
   <li> <code>TARGET_CPU</code>: The target architecture's cpu,
     e.g. "piii" or "k8". </li>
@@ -196,6 +200,7 @@ in your genrule's cmd attribute.
     they may be on read-only filesystems, and even if they aren't,
     doing so would trash the source tree.</li>
 </ul>
+
 
 <h2 id="location">"$(location)" substitution</h2>
 

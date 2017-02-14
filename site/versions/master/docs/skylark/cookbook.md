@@ -4,6 +4,7 @@ title: Extensions examples
 ---
 # Extensions examples
 
+
 ## <a name="macro"></a>Macro creating a rule
 
 An example of a macro creating a rule.

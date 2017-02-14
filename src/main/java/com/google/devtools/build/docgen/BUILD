@@ -60,3 +60,15 @@ filegroup(
     testonly = 0,  # All srcs should be not test only, overwrite package default.
     srcs = glob(["**"]),
 )
+
+js_binary(
+    name = "be-redirector-compiled",
+    srcs = ["scripts/be-redirector.js"],
+    compile = 1,
+    defs = [
+        "--property_renaming=ALL_UNQUOTED",
+        "--variable_renaming=ALL",
+        "--closure_pass",
+    ],
+    externs_list = ["//javascript/externs:common"],
+)

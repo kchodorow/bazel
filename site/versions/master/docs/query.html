@@ -2,7 +2,11 @@
 layout: documentation
 title: Query Language
 ---
+end-block-->
+
+
 <h1>The Bazel Query Reference</h1>
+
 
 <p>
   When you use <code>bazel query</code> to analyze build
@@ -11,6 +15,7 @@ title: Query Language
   language.  This document also describes the output
   formats <code>bazel query</code> supports.
 </p>
+
 
 <h2>Examples</h2>
 
@@ -48,7 +53,9 @@ title: Query Language
 <a href="#path-operators">allpaths</a><br/>
 <a href="#attr">attr</a><br/>
 
+
 <a href="#buildfiles">buildfiles</a><br/>
+
 
 <a href="#deps">deps</a><br/>
 <a href="#set-operations">except</a><br/>
@@ -93,6 +100,7 @@ title: Query Language
     <p>
       Quoting <em>is</em> necessary when writing scripts that
       construct Bazel query expressions from user-supplied values.
+
 
     </p>
     <pre>
@@ -156,6 +164,7 @@ title: Query Language
   are established using attributes that start with <code>$</code> and they
   cannot be overridden in BUILD files.
 
+
 </p>
 
 <p>
@@ -187,6 +196,7 @@ title: Query Language
   needed to support message translation, even though you don't intend
   to use that feature in your build.
 </p>
+
 
 <h3 id='graph-order'>On the preservation of graph order</h3>
 
@@ -316,6 +326,7 @@ title: Query Language
   refer to <a href='bazel-user-manual.html#target-patterns'>Target Patterns</a>
   in the Bazel User Manual for further details, or type <code>bazel
   help target-syntax</code>.
+
 
 </p>
 
@@ -491,6 +502,7 @@ x intersect (y union z)</pre>
   section below for more detail.
 </p>
 
+
 <h3 id="deps">Transitive closure of dependencies: deps</h3>
 <pre>expr ::= deps(<var>expr</var>)
        | deps(<var>expr</var>, <var>depth</var>)</pre>
@@ -504,6 +516,7 @@ x intersect (y union z)</pre>
   all rules in every package beneath the <code>foo</code> directory.
   Please note that 'dependencies' means only rule and file targets
   in this context, therefore the BUILD,
+
 
   and Skylark files needed to
   create these targets are not included here. For that you should use the
@@ -919,6 +932,7 @@ genrule(
   <code>labels("deps", //foo)</code>.
 </p>
 
+
 <h3 id="tests">Expand and filter test_suites: tests</h3>
 <pre>expr ::= tests(<var>expr</var>)</pre>
 <p>
@@ -926,6 +940,7 @@ genrule(
   rules in set <var>x</var>, expanding any <code>test_suite</code> rules into
   the set of individual tests that they refer to, and applying filtering by
   <code>tag</code> and <code>size</code>.
+
 
   By default, query evaluation
   ignores any non-test targets in all <code>test_suite</code> rules. This can be
@@ -976,6 +991,7 @@ genrule(
   majority of needed packages, those packages that contain only files
   that are <code>load()</code>'ed
 
+
   will be missing.
 </p>
 
@@ -987,6 +1003,7 @@ genrule(
   set <var>x</var>. In other words, for each package, it returns the
   .bzl files that are referenced from its BUILD files.
 </p>
+
 
 <h2>Output formats</h2>
 
@@ -1287,6 +1304,7 @@ maxrank
   tools (e.g. grep).  This option has no effect
   unless <code>--output=graph</code> is being used.
 </p>
+
 
 <h3 id="output-xml">XML</h3>
 <pre>--output xml</pre>

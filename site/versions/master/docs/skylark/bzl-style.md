@@ -1,7 +1,9 @@
 
+
 # .bzl file style guide
 
 ## Style
+
 
 * When in doubt, follow the
   [Python style guide](https://www.python.org/dev/peps/pep-0008/).
@@ -9,6 +11,7 @@
 * Code should be documented using
   [docstrings](https://www.python.org/dev/peps/pep-0257/). Use a docstring at
   the top of the file, and a docstring for each public function.
+
 
 * Variables and function names use lowercase with words separated by underscores
   (`[a-z][a-z0-9_]*`), e.g. `cc_library`. Top-level private values start with

@@ -1,11 +1,20 @@
 DEFAULT_VISIBILITY = [
     "//java/com/google/testing/junit/runner:__subpackages__",
     "//javatests/com/google/testing/junit/runner:__subpackages__",
-    "//third_party/bazel/src/java_tools/junitrunner/java/com/google/testing/junit/runner:__subpackages__",
-    "//third_party/bazel/src/java_tools/junitrunner/javatests/com/google/testing/junit/runner:__subpackages__",
+    "//src/java_tools/junitrunner/java/com/google/testing/junit/runner:__subpackages__",
+    "//src/java_tools/junitrunner/javatests/com/google/testing/junit/runner:__subpackages__",
 ]
 
 package(default_visibility = ["//src:__subpackages__"])
+
+package_group(
+    name = "runners",
+    packages = [
+        "//java/com/google/testing/junit/runner/...",
+        "//java/com/google/testing/matrix/env/...",
+        "//javatests/com/google/testing/junit/runner/...",
+    ],
+)
 
 # TODO(bazel-team): This should be testonly = 1.
 java_library(

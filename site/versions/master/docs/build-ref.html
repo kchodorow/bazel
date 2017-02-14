@@ -2,6 +2,8 @@
 layout: documentation
 title: BUILD files
 ---
+end-block-->
+
 <h1>Bazel: Build Files and Terminology</h1>
 <p>
   This document provides an overview of the source tree layout and the
@@ -26,10 +28,12 @@ title: BUILD files
     <ul>
       <li><a href="#core_build_language">The Core Build Language</a></li>
 
+
       <li><a href="#declaring_build_rules">Declaring Build Rules</a></li>
     </ul>
   </li>
   <li><a href="#funcs">Types of Build Rules</a></li>
+
 
   <li><a href="#dependencies">Dependencies</a>
     <ul>
@@ -48,7 +52,7 @@ title: BUILD files
    of related source files and one BUILD file. The BUILD file specifies what
    software outputs can be built from the source.
 </p>
-<h2 id="packages_targets">Workspace, Packages and Targets</h2>
+end-block --><h2 id="packages_targets">Workspace, Packages and Targets</h2>
 <h3 id="workspace">Workspace</h3>
 
 <p>A <em>workspace</em> is a directory on your filesystem that contains the
@@ -60,13 +64,13 @@ title: BUILD files
    href="/docs/be/workspace.html">Workspace Rules</a> section in the Build
    Encyclopedia.
 </p>
-<h3 id="packages">Packages</h3>
+end-block --><h3 id="packages">Packages</h3>
 <p>
   The primary unit of code organization in a workspace is
   the <i>package</i>.  A package is collection of related files and a
   specification of the dependencies among them.
 </p>
-<p>
+end-block --><p>
   A package is defined as a directory containing a file
   named <code>BUILD</code>, residing beneath the top-level directory in the
   workspace.  A package includes all files in its directory, plus all
@@ -190,6 +194,7 @@ digraph G1 {
 </pre>
 
 <p>
+
 
   Each label has two parts, a package name (<code>my/app/main</code>)
   and a target name (<code>app_binary</code>).  Every label uniquely
@@ -360,6 +365,7 @@ testdata/input.txt
   Package names may not contain the substring <code>//</code>, nor
   end with a slash.
 </p>
+
 
 <h3 id="rules">Rules</h3>
 
@@ -644,6 +650,7 @@ arg ::= IDENTIFIER '=' expr
 
     <p>Such rules also create a runfiles directory
 
+
       containing all the files mentioned in a <code>data</code>
       attribute belonging to the rule, or any rule in its transitive
       closure of dependencies; this set of files is gathered together in
@@ -653,6 +660,7 @@ arg ::= IDENTIFIER '=' expr
   <li><p><code>*_test</code>
       rules are a specialization of a <code>*_binary</code> rule, used for automated
       testing.  Tests are simply programs that return zero on success.
+
 
       </p>
 
@@ -669,6 +677,7 @@ arg ::= IDENTIFIER '=' expr
       Failure to observe the rule will cause the test to fail when it is
       executed on a remote testing host.
 
+
     </p>
   </li>
 
@@ -679,6 +688,7 @@ arg ::= IDENTIFIER '=' expr
     separate-compilation behavior.
   </li>
 </ul>
+
 
 <h2 id="dependencies">Dependencies</h2>
 
@@ -728,6 +738,7 @@ arg ::= IDENTIFIER '=' expr
   <i>D</i> is an <em>overapproximation</em> of <i>A</i>.
 </p>
 
+
 <p>
   It is important that it not be too much of an overapproximation,
   though, since redundant declared dependencies can make builds slower and
@@ -748,6 +759,7 @@ arg ::= IDENTIFIER '=' expr
 </p>
 
 <p>
+
 
   You need not (and should not) attempt to list everything indirectly imported,
   even if it is "needed" by A at execution time.

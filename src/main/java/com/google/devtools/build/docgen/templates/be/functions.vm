@@ -81,6 +81,7 @@ load("/tools/build_rules/build_test", "build_test")
   However, this syntax is deprecated and will be removed soon.
 </p>
 
+
 <!-- =================================================================
                               package()
      =================================================================
@@ -152,8 +153,10 @@ file, before any rule.</p>
         tag packages that need some kind of special handling. Do not use this unless
         explicitly requested by someone working on the build system.</p>
 
+
       </td>
     </tr>
+
 
   </tbody>
 </table>
@@ -168,6 +171,7 @@ on a rule, if present, override this specification.
 <pre class="code">
 package(default_visibility = ["//foo:target"])
 </pre>
+
 
 <!-- =================================================================
                               package_group()
@@ -291,6 +295,7 @@ package_group(
 )
 </pre>
 
+
 <!-- =================================================================
                               licenses()
      =================================================================
@@ -303,6 +308,7 @@ package_group(
 <p><code>licenses()</code> specifies the default license type (or types)
    of the build rules in a <code>BUILD</code> file.
 
+
    The <code>licenses()</code> directive should appear close to the
    beginning of the <code>BUILD</code> file, before any build rules, as it
    sets the <code>BUILD</code>-file scope default for build rule license
@@ -313,6 +319,7 @@ package_group(
 <p>The argument, <code id="licenses.licence_types">license_types</code>,
    is a list of license-type strings.
    <!-- TODO(bazel-team): specify some examples -->
+
 
 </p>
 
@@ -335,6 +342,7 @@ licenses(["notice"])  # MIT license
 
 exports_files(["jquery-2.1.1.js"])
 </pre>
+
 
 <!-- =================================================================
                         exports_files([label, ...])
@@ -387,6 +395,7 @@ exports_files(["jquery-2.1.1.js"])
 
 exports_files(["golden.txt"])
 </pre>
+
 
 <!-- =================================================================
                                glob()
@@ -458,6 +467,7 @@ There are several important limitations and caveats:
     <code>x/y</code> or it was marked as deleted using the
     <a href="../bazel-user-manual.html#flag--deleted_packages">--deleted_packages</a>
     flag.
+
 
   </li>
 
@@ -588,6 +598,7 @@ $ bazel query '//foo:all' | sort
 //foo:count_lines_c_test
 </pre>
 
+
 <!-- =================================================================
                               select()
      =================================================================
@@ -661,6 +672,7 @@ sh_binary(
   </li>
   <li><code>select</code> works with most, but not all, attributes. Incompatible
   attributes are marked <code>nonconfigurable</code> in their documentation.
+
 
   </li>
 </ul>

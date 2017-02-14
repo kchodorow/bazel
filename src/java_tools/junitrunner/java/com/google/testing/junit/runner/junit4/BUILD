@@ -1,6 +1,6 @@
 DEFAULT_VISIBILITY = [
-    "//third_party/bazel/src/java_tools/junitrunner/java/com/google/testing/junit/runner:__subpackages__",
-    "//third_party/bazel/src/java_tools/junitrunner/javatests/com/google/testing/junit/runner:__subpackages__",
+    "//src/java_tools/junitrunner/java/com/google/testing/junit/runner:__subpackages__",
+    "//src/java_tools/junitrunner/javatests/com/google/testing/junit/runner:__subpackages__",
 ]
 
 package(default_visibility = ["//src:__subpackages__"])

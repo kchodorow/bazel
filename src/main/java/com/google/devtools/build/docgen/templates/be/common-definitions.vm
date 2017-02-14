@@ -8,6 +8,7 @@ title: Common Definitions
 #parse("com/google/devtools/build/docgen/templates/be/header.vm")
 #end
 
+
 <h1 id="common-definitions">Common definitions</h1>
 
 <p>This section defines various terms and concepts that are common to
@@ -70,6 +71,7 @@ many functions or build rules below.
 
 <h2 id="common-attributes">Attributes common to all build rules</h2>
 
+
 #macro(commonAttributeDoc $type $attributeMap)
   <table class="table table-condensed table-bordered table-params">
     <colgroup>
@@ -98,19 +100,25 @@ Please note that it is an error to list the same label twice in a list of
 labels attribute.
 </p>
 
+
 #commonAttributeDoc("common" $commonAttributes)
+
 
 <h2 id="common-attributes-tests">Attributes common to all test rules (*_test)</h2>
 
 <p>This section describes attributes that are common to all test rules.</p>
 
+
 #commonAttributeDoc("test" $testAttributes)
+
 
 <h2 id="common-attributes-binaries">Attributes common to all binary rules (*_binary)</h2>
 
 <p>This section describes attributes that are common to all binary rules.</p>
 
+
 #commonAttributeDoc("binary" $binaryAttributes)
+
 
 <h2 id="configurable-attributes">Configurable attributes</h2>
 
@@ -158,6 +166,7 @@ config_setting(
   Attributes marked <code>nonconfigurable</code> in their documentation cannot
   use this feature (usually because Bazel has to know their values before flags
   have been parsed).
+
 
 </p>
 

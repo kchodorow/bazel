@@ -4,6 +4,7 @@ title: User Manual
 ---
 <h1>A User's Guide to Bazel</h1>
 
+
 <h2 id='overview'>Bazel overview</h2>
 
 <p>
@@ -22,17 +23,22 @@ title: User Manual
     <a href='#analyze-profile'>analyze-profile</a>     Analyzes build profile data.
     <a href='#build'>build</a>               Builds the specified targets.
 
+
     <a href='#canonicalize'>canonicalize-flags</a>  Canonicalize Bazel flags.
     <a href='#clean'>clean</a>               Removes output files and optionally stops the server.
 
+
     <a href='#help'>help</a>                Prints help for commands, or the index.
+
 
     <a href='#info'>info</a>                Displays runtime info about the bazel server.
 
     <a href='#fetch'>fetch</a>                Fetches all external dependencies of a target.
     <a href='#mobile-install'>mobile-install</a>      Installs apps on mobile devices.
 
+
     <a href='#query'>query</a>               Executes a dependency graph query.
+
 
     <a href='#run'>run</a>                 Runs the specified target.
     <a href='#shutdown'>shutdown</a>            Stops the Bazel server.
@@ -48,6 +54,7 @@ title: User Manual
                      Explains the syntax for specifying targets.
     bazel help info-keys
                      Displays a list of keys used by the info command.
+
 
 </pre>
 <p>
@@ -115,6 +122,7 @@ title: User Manual
   command (build, test, etc.) has finished and not keep a server process
   around.
 </p>
+
 
 <p>
   When running <code>bazel</code>, the client first checks that the
@@ -236,6 +244,7 @@ the <code class='flag'>--bazelrc=<var>file</var></code> option, and the
 
   build:memcheck --strip=never --test_timeout=3600
 </pre>
+
 
 <h2 id='build'>Building programs with Bazel</h2>
 <h3>The <code>build</code> command</h3>
@@ -734,6 +743,7 @@ $ bazel fetch //...
   not benefit.
 </p>
 
+
 <h3 id='correctness'>Correct incremental rebuilds</h3>
 
 <p>
@@ -834,6 +844,7 @@ $ bazel fetch //...
 <p>
   If you ever detect a stable inconsistent state with Bazel, please report a bug.
 
+
 </p>
 
 <h4 id='sandboxing'>Sandboxed execution</h4>
@@ -926,6 +937,7 @@ $ bazel fetch //...
   tools.
 </p>
 
+
 <h3 id='phases'>Phases of a build</h3>
 
 <p>
@@ -979,6 +991,7 @@ $ bazel fetch //...
   atop the loading phase.
 </p>
 
+
 <h4 id='execution-phase'>Execution phase</h4>
 <p>
   The third and final phase of the build is <b>execution</b>.  This
@@ -1019,6 +1032,7 @@ $ bazel fetch //...
   This option specifies the set of directories that are searched to
   find the BUILD file for a given package.
 
+
 </p>
 
 <h4 id='flag--deleted_packages'><code class='flag'>--deleted_packages</code></h4>
@@ -1028,6 +1042,7 @@ $ bazel fetch //...
   on the package path. This can be used to simulate the deletion of packages without
   actually deleting them.
 </p>
+
 
 <h3 id='checking-options'>Error checking options</h3>
 <p>
@@ -1048,6 +1063,7 @@ $ bazel fetch //...
 </p>
 <ul>
 
+
   <li><code>public</code>: Verify that all java_libraries marked with
     <code>constraints = ['public']</code> only depend on java_libraries
     that are marked as <code>constraints = ['public']</code> too. If bazel
@@ -1056,11 +1072,13 @@ $ bazel fetch //...
   </li>
 </ul>
 
+
 <h4 id='flag--check_visibility'><code class='flag'>--[no]check_visibility</code></h4>
 <p>
   If this option is set to false, visibility checks are demoted to warnings.
   The default value of this option is true, so that by default, visibility
   checking is done.
+
 
 </p>
 
@@ -1102,6 +1120,7 @@ $ bazel fetch //...
   --experimental_extra_action_filter=.*/bar/.*
 </pre>
 
+
 <h4 id='flag--output_filter'><code class='flag'>--output_filter <var>regex</var></code></h4>
 <p>
   The <code class='flag'>--output_filter</code> option will only show build and compilation
@@ -1130,6 +1149,7 @@ $ bazel fetch //...
   </tr>
 </table>
 
+
 <h4 id='flag--analysis_warnings_as_errors'><code>--[no]analysis_warnings_as_errors</code></h4>
 <p>
   When this option is enabled, visible analysis warnings (as specified by
@@ -1137,6 +1157,7 @@ $ bazel fetch //...
   phase from starting. This feature can be used to enable strict builds that
   do not allow new warnings to creep into a project.
 </p>
+
 
 <h3 id='flags-options'>Flags options</h3>
 <p>
@@ -1217,6 +1238,7 @@ $ bazel fetch //...
   will be placed on the gcc command line <em>after</em> these options.
 </p>
 
+
 <h4 id='flag--linkopt'><code class='flag'>--linkopt <var>linker-option</var></code></h4>
 <p>
   This option takes an argument which is to be passed to gcc when linking.
@@ -1290,6 +1312,7 @@ $ bazel fetch //...
   <code class='flag'>--fdo_optimize=<var>profile-zip</var></code>
   Bazel option to enable the FDO optimized compilation.
 
+
 </p>
 <p>
   For the LLVM compiler the argument is also the directory under which the raw LLVM profile
@@ -1312,6 +1335,7 @@ $ bazel fetch //...
 <p>
   Alternatively, the argument provided can point to an auto profile
   identified by the extension .afdo.
+
 
 </p>
 <p>
@@ -1362,6 +1386,7 @@ $ bazel fetch //...
   <code><a href="#flag--linkopt">--linkopt</a>=-Wl,--warn-unresolved-symbols</code>.
 </p>
 
+
 <h4 id='flag--output_symbol_counts'><code class='flag'>--[no]output_symbol_counts</code></h4>
 <p>
   If enabled, each gold-invoked link of a C++ executable binary will also output
@@ -1374,6 +1399,7 @@ $ bazel fetch //...
 <p>
  This option is disabled by default.
 </p>
+
 
 <h4 id='flag--jvmopt'><code class='flag'>--jvmopt <var>jvm-option</var></code></h4>
 <p>
@@ -1416,6 +1442,7 @@ $ bazel fetch //...
   command line <em>after</em> these options.
 </p>
 
+
 <h5 id='-extra_checks'><code>-extra_checks[:(off|on)]</code></h5>
 
 <p>
@@ -1427,6 +1454,7 @@ $ bazel fetch //...
   When this option is not specified, the default behavior is used.
 </p>
 
+
 <h4 id='flag--strict_java_deps'><code class='flag'>--strict_java_deps
     (default|strict|off|warn|error)</code></h4>
 <p>
@@ -1436,6 +1464,7 @@ $ bazel fetch //...
   for type checking each java file, and warn/error if they are not the output
   of a direct dependency of the current target.
 </p>
+
 
 <ul>
   <li> <code>off</code> means checking is disabled.
@@ -1449,6 +1478,7 @@ $ bazel fetch //...
     This is also the default behavior when the flag is unspecified.
   </li>
 </ul>
+
 
 <h3 id='semantics-options'>Semantics options</h3>
 <p>
@@ -1480,12 +1510,14 @@ $ bazel fetch //...
   </li>
 </ul>
 
+
 <h4 id='flag--cpu'><code class='flag'>--cpu <var>cpu</var></code></h4>
 <p>
 This option specifies the target CPU architecture to be used for
 the compilation of binaries during the build.
 </p>
 <p>
+
 
 </p>
 
@@ -1505,6 +1537,7 @@ the compilation of binaries during the build.
 <p>
   The CPUs to build C/C++ libraries for in the transitive <code>deps</code> of
   <code>android_binary</code>
+
 
   rules. Other C/C++ rules are not affected. For example, if a <code>cc_library</code>
   appears in the transitive <code>deps</code> of an <code>android_binary</code> rule and a
@@ -1533,11 +1566,13 @@ The default is <code>armeabi-v7a</code>.
   </p>
 </p>
 
+
 <h4 id='flag--experimental_skip_static_outputs'><code class='flag'>--experimental_skip_static_outputs</code></h4>
 <p>
   The <code class='flag'>--experimental_skip_static_outputs</code> option causes all
   statically-linked C++ binaries to <b>not</b> be output in any meaningful
   way.
+
 
 </p>
 <p>
@@ -1547,6 +1582,7 @@ The default is <code>armeabi-v7a</code>.
   that.  This option is experimental and may go away at any time.
 </p>
 
+
 <h4 id='flag--per_file_copt'><code class='flag'>--per_file_copt
     <var>[+-]regex[,[+-]regex]...@option[,option]...</var></code></h4>
 <p>
@@ -1554,6 +1590,7 @@ The default is <code>armeabi-v7a</code>.
   expressions and not matching any of the exclusion expressions will be built
   with the given options. The label matching uses the canonical form of the label
   (i.e //<code>package</code>:<code>label_name</code>).
+
 
   The execution path is the relative path to your workspace directory including the base name
   (including extension) of the C++ file. It also includes any platform dependent prefixes.
@@ -1615,12 +1652,18 @@ The default is <code>armeabi-v7a</code>.
   <li><code>fully</code>: Links all targets dynamically.  This will speed up
       linking time, and reduce the size of the resulting binaries.
 
+<!-- begin-block:internal-->
+      However, the binaries will only be usable on the local machine (e.g., for running
+      tests), not on Borg or for releases.
+
+
   </li>
   <li><code>off</code>: Links all targets in
       <a href='be/c-cpp.html#cc_binary.linkstatic'>mostly static</a> mode.
       If <code>-static</code> is set in linkopts, targets will change to fully
       static.</li>
 </ul>
+
 
 <h4 id='flag--fission'><code class='flag'>--fission (yes|no|[dbg][,opt][,fastbuild])</code></h4>
 <p>
@@ -1629,6 +1672,7 @@ The default is <code>armeabi-v7a</code>.
   <a href='https://gcc.gnu.org/wiki/DebugFission'>Fission</a>,
   which writes C++ debug information to dedicated .dwo files instead of .o files, where it would
   otherwise go. This substantially reduces the input size to links and can reduce link times.
+
 
 </p>
 <p>
@@ -1639,6 +1683,7 @@ The default is <code>armeabi-v7a</code>.
   universally. When set to <code class='flag'>no</code>, Fission is disabled
   universally. Default is <code class='flag'>dbg</code>.
 </p>
+
 
 <h4 id='flag--force_ignore_dash_static'><code class='flag'>--force_ignore_dash_static</code></h4>
 <p>
@@ -1659,12 +1704,14 @@ The default is <code>armeabi-v7a</code>.
   where users want PIC code explicitly generated for static links.
 </p>
 
+
 <h4 id='flag--android_resource_shrinking'><code class='flag'>--android_resource_shrinking</code></h4>
 <p>
   Selects whether to perform resource shrinking for android_binary rules. Sets the default for the
   <a href='be/android.html#android_binary.shrink_resources'>shrink_resources attribute</a> on
   android_binary rules; see the documentation for that rule for further details. Defaults to off.
 </p>
+
 
 <h4 id='flag--custom_malloc'><code class='flag'>--custom_malloc <var>malloc-library-target</var></code></h4>
 <p>
@@ -1673,6 +1720,7 @@ The default is <code>armeabi-v7a</code>.
   default (by not specifying any <code>malloc</code>).
 </p>
 
+
 <h4 id='flag--crosstool_top'><code class='flag'>--crosstool_top <var>label</var></code></h4>
 <p>
   This option specifies the location of the crosstool compiler suite
@@ -1680,8 +1728,10 @@ The default is <code>armeabi-v7a</code>.
   location for a CROSSTOOL file and uses that to automatically determine
   settings for
 
+
   <code class='flag'>--compiler</code>.
 </p>
+
 
 <h4 id='flag--host_crosstool_top'><code class='flag'>--host_crosstool_top <var>label</var></code></h4>
 <p>
@@ -1717,6 +1767,7 @@ The default is <code>armeabi-v7a</code>.
   libc version, and target CPU are allowed.
 </p>
 
+
 <h4 id='flag--glibc'><code class='flag'>--glibc <var>version</var></code></h4>
 <p>
   This option specifies the version of glibc that the target should be linked
@@ -1732,6 +1783,7 @@ The default is <code>armeabi-v7a</code>.
   Note that only certain combinations of crosstool version, compiler version,
   glibc version, and target CPU are allowed.
 </p>
+
 
 <h4 id='flag--android_sdk'><code class='flag'>--android_sdk <var>label</var></code></h4>
 <p>
@@ -1767,6 +1819,7 @@ The default is <code>armeabi-v7a</code>.
   option.
 </p>
 
+
 <h3 id='strategy-options'>Build strategy options</h3>
 <p>
   These options affect how Bazel will execute the build.
@@ -1774,6 +1827,7 @@ The default is <code>armeabi-v7a</code>.
   generated by the build.  Typically their main effect is on the
   speed on the build.
 </p>
+
 
 <h4 id='flag--spawn_strategy'><code class='flag'>--spawn_strategy <var>strategy</var></code></h4>
 <p>
@@ -1791,7 +1845,9 @@ The default is <code>armeabi-v7a</code>.
     This is the default on systems that support sandboxed execution.
   </li>
 
+
 </ul>
+
 
 <h4 id='flag--genrule_strategy'><code class='flag'>--genrule_strategy <var>strategy</var></code></h4>
 <p>
@@ -1810,10 +1866,13 @@ The default is <code>armeabi-v7a</code>.
     This is the default for Bazel on systems that support sandboxed execution.
   </li>
 
+
 </ul>
+
 
 <h4 id='flag--local_genrule_timeout_seconds'><code class='flag'>--local_genrule_timeout_seconds <var>seconds</var></code></h4>
 <p>Sets a timeout value for local genrules with the given number of seconds.</p>
+
 
 <h4 id='flag--jobs'><code class='flag'>--jobs <var>n</var></code> (-j)</h4>
 <p>
@@ -1845,6 +1904,7 @@ The default is <code>armeabi-v7a</code>.
   that progress is reported once every minute.
 </p>
 
+
 <h4 id='flag--ram_utilization_factor'><code class='flag'>--ram_utilization_factor</code> <var>percentage</var></h4>
 <p>
   This option, which takes an integer argument, specifies what percentage
@@ -1858,6 +1918,7 @@ The default is <code>armeabi-v7a</code>.
   higher or much lower than specified. Note also that this option does not
   affect the amount of memory that the Bazel server itself will use.
 </p>
+
 
 <h4 id='flag--local_resources'><code class='flag'>--local_resources</code> <var>availableRAM,availableCPU,availableIO</var></h4>
 <p>
@@ -1881,6 +1942,7 @@ cores directly from system configuration and will assume 1.0 I/O resource.
   Using <code class='flag'>--nobuild_runfile_links</code> can be useful
   to validate if all targets compile without incurring the overhead
   for building the runfiles trees.
+
 
   Within Bazel's output tree, the
   runfiles symlink tree is typically rooted as a sibling of the corresponding
@@ -1911,6 +1973,7 @@ cores directly from system configuration and will assume 1.0 I/O resource.
   execution.
 </p>
 
+
 <h4 id='flag--discard_analysis_cache'>
   <code class='flag'>--[no]discard_analysis_cache</code></h4>
 <p>
@@ -1919,6 +1982,7 @@ cores directly from system configuration and will assume 1.0 I/O resource.
   (around 10%) for the <a href="#execution-phase">execution phase</a>.
   The drawback is that further incremental builds will be slower.
 </p>
+
 
 <h4 id='flag--keep_going'><code class='flag'>--[no]keep_going</code>  (-k)</h4>
 <p>
@@ -1938,6 +2002,7 @@ cores directly from system configuration and will assume 1.0 I/O resource.
   build will proceed to the execution phase, but only for the targets
   that were successfully analyzed.
 </p>
+
 
 <h4 id='flag--use_ijars'><code class='flag'>--[no]use_ijars</code></h4>
 <p>
@@ -1961,6 +2026,7 @@ cores directly from system configuration and will assume 1.0 I/O resource.
   Note that changing the <code class='flag'>--use_ijars</code> setting will force
   a recompilation of all affected classes.
 </p>
+
 
 <h4 id='flag--interface_shared_objects'>
     <code class='flag'>--[no]interface_shared_objects</code>
@@ -2004,6 +2070,7 @@ cores directly from system configuration and will assume 1.0 I/O resource.
   <code>bazel test --build_tests_only foo/...</code> may not detect all build
   breakages in the <code>foo</code> tree.
 </p>
+
 
 <h4 id='flag--check_up_to_date'><code class='flag'>--[no]check_up_to_date</code></h4>
 <p>
@@ -2059,6 +2126,7 @@ cores directly from system configuration and will assume 1.0 I/O resource.
   your <a href='#flag--show_result'><code class='flag'>--show_result <var>n</var></code></a>
   setting is high enough.
 </p>
+
 
 <h4 id='flag--build_tag_filters'><code class='flag'>--build_tag_filters <var>tag[,tag]*</var></code></h4>
 <p>
@@ -2179,6 +2247,7 @@ cores directly from system configuration and will assume 1.0 I/O resource.
   over passing different <code class='flag'>--test_arg</code> filter arguments,
   but not all frameworks support it.
 </p>
+
 
 <h3>Verbosity options: options that control what Bazel prints</h3>
 
@@ -2312,6 +2381,7 @@ either to the terminal, or to additional log files.
   However some commands are implemented internally within Bazel, such as
   creating symlink trees. For these there's no command line to display.
 
+
 </p>
 
 <p>
@@ -2329,11 +2399,13 @@ either to the terminal, or to additional log files.
   for copying and pasting to a shell prompt.
 </p>
 
+
 <h4 id='flag--stamp'><code class='flag'>--[no]stamp</code></h4>
 <p>
   This option controls whether stamping is enabled for
   rule types that support it. For most of the supported rule types stamping is
   enabled by default (e.g. <code>cc_binary</code>).
+
 
   By default, stamping is disabled for all tests. Specifying
   <code class='flag'>--stamp</code> does not force affected targets to be rebuilt,
@@ -2349,6 +2421,7 @@ either to the terminal, or to additional log files.
   selects whether stamping is enabled. Bazel never stamps binaries that are
   built for the host configuration, regardless of the stamp attribute.
 </p>
+
 
 <h3 id='misc_build_options'>Miscellaneous options</h3>
 
@@ -2374,6 +2447,7 @@ either to the terminal, or to additional log files.
 </p>
 <ul>
 
+
   <li>
     <p><b>Suppress symlink creation:</b>
       <code class='flag'>--symlink_prefix=/</code> will cause Bazel to not
@@ -2390,6 +2464,7 @@ either to the terminal, or to additional log files.
     </p>
   </li>
 </ul>
+
 
 <h4 id='flag--platform_suffix'><code class='flag'>--platform_suffix <var>string</var></code></h4>
 <p>
@@ -2412,6 +2487,7 @@ either to the terminal, or to additional log files.
   cycle, and by release engineers when preparing binaries for deployment
   to production.  This section provides a list of tips for release
   engineers using Bazel.
+
 
 </p>
 
@@ -2443,6 +2519,7 @@ either to the terminal, or to additional log files.
   </li>
 </ul>
 
+
 <h2 id='test'>Running tests with Bazel</h2>
 <p>
   To build and run tests with bazel, type <code>bazel test</code> followed by
@@ -2456,6 +2533,7 @@ either to the terminal, or to additional log files.
   their prerequisites are built, meaning that test execution is
   interleaved with building. Doing so usually results in significant
   speed gains.
+
 
 </p>
 
@@ -2495,6 +2573,7 @@ either to the terminal, or to additional log files.
   convenient for overriding the default on a particular run.
 </p>
 
+
 <h4 id="flag--check_tests_up_to_date"><code class='flag'>--check_tests_up_to_date</code></h4>
 <p>
   This option tells Bazel not to run the tests, but to merely check and report
@@ -2524,6 +2603,7 @@ over-generous timeout can hide real problems that crop up unexpectedly.
 For instance, a test that normally executes in a minute or two should not have
 a timeout of ETERNAL or LONG as these are much, much too generous.
 
+
   This option is useful to help users decide on a good timeout value or
   sanity check existing timeout values.
 </p>
@@ -2532,6 +2612,7 @@ Note that each test shard is allotted the timeout of the entire
 <code>XX_test</code> target.  Using this option does not affect a test's timeout
 value, merely warns if Bazel thinks the timeout could be restricted further.
 </p>
+
 
 <h4 id='flag--test_keep_going'><code class='flag'>--[no]test_keep_going</code></h4>
 <p>
@@ -2595,6 +2676,7 @@ value, merely warns if Bazel thinks the timeout could be restricted further.
   failing status.
 </p>
 
+
 <h4 id='flag--test_summary'><code class='flag'>--test_summary <var>output_style</var></code></h4>
 <p>
   Specifies how the test result summary should be displayed.
@@ -2635,6 +2717,7 @@ value, merely warns if Bazel thinks the timeout could be restricted further.
   </li>
   <li><code>streamed</code> streams stdout/stderr output from each test in
   real-time.
+
 
   </li>
 </ul>
@@ -2697,6 +2780,7 @@ value, merely warns if Bazel thinks the timeout could be restricted further.
   timeout.
 </p>
 
+
 <h4 id='flag--test_arg'><code class='flag'>--test_arg <var>arg</var></code></h4>
 <p>
   Passes command-line options/flags/arguments to the test (not to the test runner). This
@@ -2718,7 +2802,9 @@ value, merely warns if Bazel thinks the timeout could be restricted further.
   <code>System.getenv("var")</code> (Java),
   <code>getenv("var")</code> (C or C++),
 
+
 </p>
+
 
 <h4 id="flag--run_under"><code class='flag'>--run_under=<var>command-prefix</var></code></h4>
 <p>
@@ -2735,6 +2821,7 @@ value, merely warns if Bazel thinks the timeout could be restricted further.
   that will be executed along with the other words.
 </p>
 
+
 <p>
 Some caveats apply:
 </p>
@@ -2749,6 +2836,7 @@ Some caveats apply:
     can't be used for interactive commands.
   </li>
 
+
 </ul>
 <p>
 Examples:
@@ -2759,7 +2847,9 @@ Examples:
         --run_under='/usr/bin/strace -c'
         --run_under='/usr/bin/valgrind --quiet --num-callers=20'
 
+
 </pre>
+
 
 <h4>Test selection</h4>
 <p>
@@ -2772,11 +2862,13 @@ Examples:
   filter args to the test runner.
 </p>
 
-<h4 id="other_options_for_blaze_test">Other options for <code>bazel test</code></h4>
+<h4 id="other_options_for_bazel_test">Other options for <code>bazel test</code></h4>
 <p>
   The syntax and the remaining options are exactly like
   <a href='#build'>bazel build</a>.
 </p>
+
+
 
 
 
@@ -2827,6 +2919,7 @@ Examples:
   and cannot run under label.
 </p>
 
+
 <h3>Executing tests</h3>
 
 <p>
@@ -2865,6 +2958,7 @@ in an environment closer to the current shell environment. Note that none of the
   enabled by default, causes dependencies on "host
   configuration" targets to be included in the dependency graph over
   which the query operates.
+
 
 </p>
 <p>
@@ -2957,6 +3051,7 @@ in an environment closer to the current shell environment. Note that none of the
     directory used by this Bazel instance for the current user. Bazel
     installs its internally required executables below this directory.
 
+
   </li>
   <li><code>output_base</code>: the absolute path to the base output
     directory used by this Bazel instance for the current user and
@@ -2988,6 +3083,7 @@ in an environment closer to the current shell environment. Note that none of the
     change the setting of the <code class='flag'>--output_base</code> or
     <code class='flag'>--output_user_root</code> options.
   </li>
+
 
   <li><code>used-heap-size</code>,
       <code>committed-size</code>,
@@ -3063,6 +3159,7 @@ in an environment closer to the current shell environment. Note that none of the
   the <code>bazel-bin</code> symlink cannot be created for some reason
   (e.g. you are building from a read-only directory).
 </p>
+
 
 <h3 id='version'>The <code>version</code> command</h3>
 
@@ -3164,6 +3261,7 @@ adb -s deadbeef install ...
   printed to the console.
 </p>
 
+
 <h3 id='analyze-profile'>The <code>analyze-profile</code> command</h3>
 
 <p>
@@ -3209,7 +3307,9 @@ adb -s deadbeef install ...
   See the section on <a href='#profiling'>Troubleshooting performance by profiling</a> for
   format details and usage help.
 
+
 </p>
+
 
 <h3 id='canonicalize'>The <code>canonicalize-flags</code> command</h3>
 
@@ -3285,6 +3385,7 @@ adb -s deadbeef install ...
   builds.
 </p>
 
+
 <h4 id='flag--output_user_root'><code class='flag'>--output_user_root=<var>dir</var></code></h4>
 <p>
   By default, the <code>output_base</code> value is chosen to as to
@@ -3316,6 +3417,7 @@ adb -s deadbeef install ...
   base) if there is a better location in your filesystem layout.
 </p>
 
+
 <h4 id='flag--host_jvm_args'><code class='flag'>--host_jvm_args=<var>string</var></code></h4>
 <p>
   Specifies a startup option to be passed to the Java virtual machine in which <i>Bazel itself</i>
@@ -3330,6 +3432,7 @@ adb -s deadbeef install ...
   each of which will be interpreted as a separate JVM argument, but this feature will soon be
   deprecated.
 
+
 </p>
 <p>
   That this does <i>not</i> affect any JVMs used by
@@ -3342,6 +3445,7 @@ adb -s deadbeef install ...
   test --test_arg=--jvm_flags=foo ...</code>.
 </p>
 
+
 <h4 id='flag--host_jvm_debug'><code class='flag'>--host_jvm_debug</code></h4>
 <p>
   This option causes the Java virtual machine to wait for a connection
@@ -3353,6 +3457,7 @@ adb -s deadbeef install ...
   (Please note that this does <i>not</i> affect any JVMs used by
   subprocesses of Bazel: applications, tests, tools, etc.)
 </p>
+
 
 <h4 id='flag--batch'><code class='flag'>--batch</code></h4>
 <p>
@@ -3377,6 +3482,7 @@ adb -s deadbeef install ...
   Therefore, using batch mode often makes more sense in cases where performance
   is less critical, such as continuous builds.
 </p>
+
 
 <h4 id='flag--max_idle_secs'><code class='flag'>--max_idle_secs <var>n</var></code></h4>
 <p>
@@ -3474,11 +3580,13 @@ adb -s deadbeef install ...
   enabled under the same conditions as for <code class='flag'>--color=auto</code>.
 </p>
 
+
 <h4 id='flag--show_timestamps'><code class='flag'>--[no]show_timestamps</code></h4>
 <p>
   If specified, a timestamp is added to each message generated by
   Bazel specifying the time at which the message was displayed.
 </p>
+
 
 <h2 id='scripting'>Calling Bazel from scripts</h2>
 
@@ -3488,6 +3596,7 @@ adb -s deadbeef install ...
   enable effective scripting, but this section lists some details to
   bear in mind to make your scripts more robust.
 </p>
+
 
 <h3>Choosing the output base</h3>
 
@@ -3572,6 +3681,7 @@ Bazel execution can result in following exit codes:
                        testing was requested.</li>
 </ul>
 
+
 <b>For <code>bazel run</code>:</b>
 <ul>
   <li><code>1</code> - Build failed.</li>
@@ -3582,6 +3692,7 @@ Bazel execution can result in following exit codes:
 
 
 <b>For
+
 
   <code>bazel query</code>:</b>
 <ul>
@@ -3611,6 +3722,7 @@ Bazel execution can result in following exit codes:
   <code class='flag'>--bazelrc=/dev/null</code>.  If you want to perform a build
   using the user's preferred settings, the default behavior is better.
 </p>
+
 
 <h3>Command log</h3>
 
@@ -3644,6 +3756,7 @@ Bazel execution can result in following exit codes:
   location of the output files they created.  Be sure to specify a
   very large value of <i>n</i> if you rely on these messages.
 </p>
+
 
 <h2 id='profiling'>Troubleshooting performance by profiling</h2>
 
@@ -3825,3 +3938,4 @@ Start time: [time elapsed from the profiling session start]       Duration: [tas
   <code>output_base</code> directory is usually the parent of the <code>bazel-&lt;workspace&gt;</code>
   symlink in your workspace directory.
 </p>
+end-block -->
