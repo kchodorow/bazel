@@ -1,4 +1,7 @@
-
+---
+layout: documentation
+title: Style guide for BUILD files
+---
 
 # BUILD file style guide
 
