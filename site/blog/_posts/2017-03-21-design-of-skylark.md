@@ -15,16 +15,16 @@ generate Makefiles using Python scripts, where the description of the build was
 stored in `BUILD` files containing calls to the Python functions. But this
 solution was way too slow, and the bottleneck was Make.
 
-The project Blaze (later open-sourced as Bazel) was started in 2006. It used a
+The project Bazel (later open-sourced as Bazel) was started in 2006. It used a
 simple parser to read the `BUILD` files (supporting only function calls, list
-comprehensions and variable assignments). When Blaze could not directly parse a
+comprehensions and variable assignments). When Bazel could not directly parse a
 `BUILD` file, it used a preprocessing step that ran the Python interpreter on
 the user `BUILD` file to generate a simplified `BUILD` file. The output was used
-by Blaze.
+by Bazel.
 
 This approach was simple and allowed developers to create their own macros. But
 again, this led to lots of problems in terms of maintenance, performance, and
-safety. It also made any kind of tooling more complicated, as Blaze was not able
+safety. It also made any kind of tooling more complicated, as Bazel was not able
 to parse the `BUILD` files itself.
 
 In the current iteration of Bazel, we've made the system saner by removing the
